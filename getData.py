@@ -29,7 +29,7 @@ for slang in slangList:
     data = dataToFormat.split(",")
     
     
-    with open(f'Other NgramScraper\Data\{slang}.csv', 'w') as csvfile:   #Create New CSV File
+    with open(f'Data\{slang}.csv', 'w', newline="") as csvfile:   #Create New CSV File
         filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
         startingYear = params.get('year_start') 
