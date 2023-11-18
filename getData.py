@@ -5,7 +5,7 @@ import matplotlib.ticker as ticker
 import csv
 import os
 
-slangList = ['Fuck','Shit']
+slangList = ['Trump']
 
 for slang in slangList: 
     params = {

@@ -8,7 +8,7 @@ import numpy as np
 import csv
  
 
-slangList = ['Fuck','Shit']
+slangList = ['Shit','Fuck']
 
 def createFrequencyGraph(years, values):
     floatValues = []
@@ -21,9 +21,9 @@ def createFrequencyGraph(years, values):
 
     #ax.yaxis.set_major_formatter(FormatStrFormatter('%.10f'))
     ax.plot(years,floatValues)
-    ax.set_title('Frequency Graph (Relative Use/Yr))')
+    ax.set_title(f'Relative Frequency of {slang}')
     fig.supxlabel('Year')
-    fig.supylabel(f'Relative Frequency of {slang}')
+    fig.supylabel(f'Relative Use/Yr')
     fig.savefig(f"ProcessedData/{slang}-Frequency")
 
    
@@ -31,11 +31,10 @@ def createFrequencyGraph(years, values):
 def createRateChangeGraph(years, values):
     years.pop(len(years) - 1)
     fig2, ax = plt.subplots()
-    
-    ax.xaxis.set_major_locator(ticker.MaxNLocator())
+    ax.plot(years,values)
+    ax.xaxis.set_major_locator(ticker.AutoLocator())
     fig2.supxlabel('Year')
     fig2.supylabel('Rate of Change (Relative Use/Yr)')
-    ax.plot(years,values)
     ax.set_title(f'Rate of Change of Relative Use of {slang}')
     fig2.savefig(f"ProcessedData/{slang}-ROC")
     
@@ -99,6 +98,6 @@ for slang in slangList:
     freqValues = normalizeData(dataValues)  #
     createFrequencyGraph(dataYears, dataValues)
     rateOfChangeValues = findRateOfChange(dataValues)
-    rateOfChangeValues = normalizeData(rateOfChangeValues)
+    #rateOfChangeValues = normalizeData(rateOfChangeValues)
     createRateChangeGraph(dataYears, rateOfChangeValues)
     
