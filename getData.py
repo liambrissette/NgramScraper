@@ -3,13 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import csv
+import os
 
-slangList = ['Fuck']
+slangList = ['Fuck','Shit']
 
-for slang in slangList:
+for slang in slangList: 
     params = {
         "content": slang,
-        "year_start": "1800",
+        "year_start": "1960",
         "year_end": "2020"
     }
 
@@ -28,11 +29,10 @@ for slang in slangList:
     dataToFormat = dataToSlice[startPoint:endPoint]
     data = dataToFormat.split(",")
     
-    
     with open(f'Data\{slang}.csv', 'w', newline="") as csvfile:   #Create New CSV File
         filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        startingYear = params.get('year_start') 
+        startingYear = params.get('year_start')  
         YearInt = int(startingYear) 
         
         for eachValue in data:
